@@ -1,0 +1,18 @@
+add, start, 1
+
+add, D1, 0.75
+connect, start, D1, 4, 998, 1
+add, B1, 1.8333
+connect, start, B1, 4, 1, 1
+add, M1, 2
+connect, D1, M1, 0
+connect, B1, M1, 0
+
+
+add, D2, 1.75
+connect, M1, D2, 4, 998, 1
+add, B2, 2.8333
+connect, M1, B2, 4, 1, 1
+add, M2, 3
+connect, D2, M2, 0
+connect, B2, M2, 0
