@@ -1,7 +1,5 @@
 rm(list = ls())
 
-library(ggplot2)
-
 total_trials = 100000
 
 df_all = read.csv('../data/aggregated_discovery_data.csv')
@@ -23,19 +21,14 @@ for (trial_seed in df_2$trial_seed){
   df_2[df_2$trial_seed == trial_seed,c('first_cross_site', 'first_cross_update')] = first_cross[1,c('discovery_site_idx', 'update')]
 }
 
+processed_data_dir = '../data/processed'
+if(!dir.exists(processed_data_dir)){
+  dir.create(processed_data_dir)
+}
+
+
 df_2$site_offset = df_2$discovery_site_idx - df_2$first_cross_site
 df_2$update_offset = df_2$update - df_2$first_cross_update
 
-ggplot(df_2, aes(x = site_offset, y = update_offset)) + 
-  geom_point(alpha = 0.1)
-
-ggplot(df_2, aes(x = site_offset)) + 
-  geom_histogram(binwidth = 50)
-
-ggplot(df_2, aes(x = update_offset)) + 
-  geom_histogram(binwidth = 50)
-
-
-ggplot(df_2, aes(x = abs(site_offset), y = update_offset)) + 
-  geom_point(alpha = 0.1)
+write.csv(df_2, paste0(processed_data_dir, '/matched_discovery_data.csv'))
 

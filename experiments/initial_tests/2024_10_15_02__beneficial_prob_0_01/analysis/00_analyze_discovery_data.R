@@ -6,10 +6,10 @@ total_trials = 100000
 
 df_all = read.csv('../data/aggregated_discovery_data.csv')
 
-df_b = df_all[df_all$node_name %in% c('B1', 'B2'),]
+df_b = df_all[df_all$node_name %in% c('M1', 'M2'),]
 
-df_1 = df_b[df_b$node_name == 'B1',]
-df_2 = df_b[df_b$node_name == 'B2',]
+df_1 = df_b[df_b$node_name == 'M1',]
+df_2 = df_b[df_b$node_name == 'M2',]
 
 cat('Fraction that crossed at least once: ', nrow(df_1), ' / ', total_trials, ' = ', nrow(df_1) / total_trials)
 cat('Fraction that crossed twice: ', nrow(df_2), ' / ', total_trials, ' = ', nrow(df_2) / total_trials)
@@ -26,16 +26,8 @@ for (trial_seed in df_2$trial_seed){
 df_2$site_offset = df_2$discovery_site_idx - df_2$first_cross_site
 df_2$update_offset = df_2$update - df_2$first_cross_update
 
-ggplot(df_2, aes(x = site_offset, y = update_offset)) + 
-  geom_point(alpha = 0.1)
-
-ggplot(df_2, aes(x = site_offset)) + 
-  geom_histogram(binwidth = 50)
-
-ggplot(df_2, aes(x = update_offset)) + 
-  geom_histogram(binwidth = 50)
-
-
-ggplot(df_2, aes(x = abs(site_offset), y = update_offset)) + 
-  geom_point(alpha = 0.1)
-
+processed_data_dir = '../data/processed'
+if(!dir.exists(processed_data_dir)){
+  dir.create(processed_data_dir)
+}
+write.csv(df_2, paste0(processed_data_dir, '/matched_discovery_data.csv'))
