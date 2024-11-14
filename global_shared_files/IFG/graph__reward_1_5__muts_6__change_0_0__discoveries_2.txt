@@ -1,0 +1,24 @@
+add, start, 1
+
+add, P1_1, 1.0
+connect, start, P1_1, 0
+add, P1_2, 1.0
+connect, P1_1, P1_2, 0
+add, P1_3, 1.0
+connect, P1_2, P1_3, 0
+add, P1_4, 1.0
+connect, P1_3, P1_4, 0
+add, M1, 1.5
+connect, P1_4, M1, 0
+
+add, P2_1, 1.5
+connect, M1, P2_1, 0
+add, P2_2, 1.5
+connect, P2_1, P2_2, 0
+add, P2_3, 1.5
+connect, P2_2, P2_3, 0
+add, P2_4, 1.5
+connect, P2_3, P2_4, 0
+add, M2, 2.25
+connect, P2_4, M2, 0
+
