@@ -1,0 +1,58 @@
+{
+  "graphs-to-generate": [
+    {
+      "graph": "toroidal-lattice",
+      "params": {"graph_width": 60, "graph_height": 60},
+      "output_id": "toroidal_lattice_3600__60_60",
+      "output_mode":"list"
+    },
+    {
+      "graph": "linear-chain",
+      "params": {"nodes": 3600},
+      "output_id": "linear_chain_3600",
+      "output_mode":"list"
+    },
+    {
+      "graph": "star",
+      "params": {"nodes": 3600},
+      "output_id": "star_3600",
+      "output_mode":"list"
+    },
+    {
+      "graph": "cycle",
+      "params": {"nodes": 3600},
+      "output_id": "cycle_3600",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":180, "chain_size":3240},
+      "output_id": "barbell_3600__5_90_5",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":360, "chain_size":2880},
+      "output_id": "barbell_3600__10_80_10",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":900, "chain_size":1800},
+      "output_id": "barbell_3600__25_50_25",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":1440, "chain_size":720},
+      "output_id": "barbell_3600__40_10_40",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":1620, "chain_size":360},
+      "output_id": "barbell_3600__45_5_45",
+      "output_mode":"list"
+    }
+  ]
+}

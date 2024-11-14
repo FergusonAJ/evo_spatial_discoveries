@@ -46,7 +46,6 @@ def read_graph_edges_csv(file_path:str, directed=False):
     return graph
 
 
-
 def write_undirected_graph_to_edges_csv(fname:str, graph:nx.Graph):
     file_content = "" # Will contain output to write to file
     lines = []        # Will be a list of csv rows to write to file
@@ -99,6 +98,10 @@ def write_undirected_graph_to_matrix(fname:str, graph:nx.Graph):
     # Write file content to file
     with open(fname, "w") as fp:
         fp.write(file_content)
+
+# Write networkx graph out as space-separated adjacency list
+def write_undirected_graph_to_adj_list(fname:str, graph:nx.Graph):
+    nx.write_adjlist(graph, fname)
 
 def write_node_info(output_path:str, graph:nx.Graph):
     # Collect node fields

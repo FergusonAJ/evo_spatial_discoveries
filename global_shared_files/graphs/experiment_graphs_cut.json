@@ -1,0 +1,10 @@
+{
+  "graphs-to-generate": [
+    {
+      "graph": "well-mixed",
+      "params": {"nodes": 3600},
+      "output_id": "well_mixed_3600",
+      "output_mode":"list"
+    }
+  ]
+}
