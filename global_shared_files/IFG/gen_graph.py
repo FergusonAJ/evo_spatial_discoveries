@@ -29,10 +29,10 @@ with open(fname, 'w') as fp:
         for step_id in range(1, muts_to_discovery - 1):
             step_name = f'P{discovery_id}_{step_id}'
             cur_fitness = (1 + change_per_mut) * cur_fitness
-            fp.write(f'add, {step_name}, {cur_fitness}\n')
+            fp.write(f'add, {step_name}, {cur_fitness:.20f}\n')
             fp.write(f'connect, {prev_name}, {step_name}, 0\n')
             prev_name = step_name
-        fp.write(f'add, {discovery_name}, {discovery_fitness}\n')
+        fp.write(f'add, {discovery_name}, {discovery_fitness:.20f}\n')
         fp.write(f'connect, {prev_name}, {discovery_name}, 0\n')
         fp.write('\n')
         cur_fitness = discovery_fitness
