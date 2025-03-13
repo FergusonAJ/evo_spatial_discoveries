@@ -9,7 +9,7 @@ Population next_pop;            // Temp. population while constructing the next 
 EvalInterpolatedFitnessGraph eval_ifg {
   genotype_trait = "genotype";
   fitness_trait = "fitness";
-  graph_filename = "../../shared_files/IFG/multipath/multipath_fan__0_01.txt";
+  graph_filename = "../../shared_files/IFG/multipath/multipath_fan__0_001.txt";
   mut_prob = 0.0125;
 };
 
