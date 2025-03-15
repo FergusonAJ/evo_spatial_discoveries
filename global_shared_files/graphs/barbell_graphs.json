@@ -1,0 +1,28 @@
+{
+  "graphs-to-generate": [
+    {
+      "graph": "barbell",
+      "params": {"clique_size":360, "chain_size":2880},
+      "output_id": "barbell_3600__10_80_10",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":900, "chain_size":1800},
+      "output_id": "barbell_3600__25_50_25",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":1440, "chain_size":720},
+      "output_id": "barbell_3600__40_10_40",
+      "output_mode":"list"
+    },
+    {
+      "graph": "barbell",
+      "params": {"clique_size":1620, "chain_size":360},
+      "output_id": "barbell_3600__45_5_45",
+      "output_mode":"list"
+    }
+  ]
+}

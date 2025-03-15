@@ -25,33 +25,15 @@
       "output_mode":"list"
     },
     {
-      "graph": "barbell",
-      "params": {"clique_size":180, "chain_size":3240},
-      "output_id": "barbell_3600__5_90_5",
+      "graph": "wheel",
+      "params": {"nodes": 3600},
+      "output_id": "wheel_3600",
       "output_mode":"list"
     },
     {
-      "graph": "barbell",
-      "params": {"clique_size":360, "chain_size":2880},
-      "output_id": "barbell_3600__10_80_10",
-      "output_mode":"list"
-    },
-    {
-      "graph": "barbell",
-      "params": {"clique_size":900, "chain_size":1800},
-      "output_id": "barbell_3600__25_50_25",
-      "output_mode":"list"
-    },
-    {
-      "graph": "barbell",
-      "params": {"clique_size":1440, "chain_size":720},
-      "output_id": "barbell_3600__40_10_40",
-      "output_mode":"list"
-    },
-    {
-      "graph": "barbell",
-      "params": {"clique_size":1620, "chain_size":360},
-      "output_id": "barbell_3600__45_5_45",
+      "graph": "windmill",
+      "params": {"cliques": 60, "clique_size": 59, "increase_size_to": 3600},
+      "output_id": "windmill_3600",
       "output_mode":"list"
     }
   ]

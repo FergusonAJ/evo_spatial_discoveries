@@ -1,0 +1,17 @@
+{
+  "graphs-to-generate": [
+    {
+      "graph": "comet-kite",
+      "params": 
+      {
+          "core_size": 1440, 
+          "num_tails": 720, 
+          "additional_tail_nodes":1440, 
+          "increase_size_to": 3600, 
+          "seed": (<SEED>)
+      },
+      "output_id": "comet_kite_3600",
+      "output_mode":"list"
+    }
+  ]
+}
