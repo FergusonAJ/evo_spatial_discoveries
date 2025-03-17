@@ -1,4 +1,4 @@
-rep,Generation,phylogenetic_diversity,diversity,ave_depth,mrca_depth,mean_pairwise_distance,min_pairwise_distance,max_pairwise_distance,variance_pairwise_distance,mean_evolutionary_distinctiveness,min_evolutionary_distinctiveness,max_evolutionary_distinctiveness,variance_evolutionary_distinctiveness,num_roots,num_active_taxa,num_total_orgs
+rep,Generation,phylogenetic_diversity,diversity,ave_depth,mrca_depth,mean_pairwise_distance,min_pairwise_distance,max_pairwise_distance,variance_pairwise_distance,mean_evolutionary_distinctiveness,min_evolutionary_distinctiveness,max_evolutionary_distinctiveness,variance_evolutionary_distinctiveness,num_roots,num_active_taxa,num_total_orgs,prev_mrca_depth
 001,59987,5431,8.83006,1105.79,592,649.092,1,1068,132755,494.067,248.962,2357.69,36028.1,1,641,3600,-1
 004,70317,6333,8.76291,1317.49,508,1064.86,1,1665,350086,621.821,343.898,1789.17,31832.5,1,630,3600,-1
 007,66847,7655,8.87579,1253.55,408,969.706,1,1724,272006,686.778,335.138,1900.44,94649.1,1,652,3600,-1
