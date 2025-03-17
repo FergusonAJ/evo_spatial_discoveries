@@ -7,8 +7,6 @@ do
     if [ ! $dir = "2025_03_16_01__well_mixed" ]
     then
         cp 2025_03_16_01__well_mixed/data/scripts/* ${dir}/data/scripts
-    else
-        continue
     fi
     cd $dir/data/scripts
     ./scrape_phylogenetic_data.sh  
