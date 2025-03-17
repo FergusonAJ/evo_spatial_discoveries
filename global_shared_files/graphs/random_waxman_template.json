@@ -4,9 +4,9 @@
       "graph": "random-waxman",
       "params": 
       {
-          "b": 0.4, 
-          "a": 0.2, 
-          "n": 3600, 
+          "beta": 0.4, 
+          "alpha": 0.2, 
+          "nodes": 3600, 
           "seed": (<SEED>)
       },
       "output_id": "random_waxman_3600",
