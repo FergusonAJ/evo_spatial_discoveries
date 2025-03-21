@@ -68,7 +68,8 @@ cd ${SCRATCH_JOB_DIR}
 
 
 # Spin up python virtual environment
-source (<REPO_ROOT_DIR>)/.venv/bin/activate
+#source (<REPO_ROOT_DIR>)/.venv/bin/activate
+export PYTHONPATH="(<REPO_ROOT_DIR>)/.venv/lib/python3.11/site-packages:${PYTHONPATH}"
 whereis python3
 python3 --version
 
