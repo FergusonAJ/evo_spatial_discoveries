@@ -1,0 +1,98 @@
+#!/bin/bash --login
+#SBATCH --time=03:59:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1g
+#SBATCH --job-name (<EXP_NAME>)
+#SBATCH --array=1-50
+#SBATCH --output=(<SCRATCH_SLURM_OUT_DIR>)/slurm-%A_%a.out
+
+IS_MOCK=0
+LOAD_MODULES=1
+while getopts "ml" opt; do
+  case $opt in
+    m)
+     IS_MOCK=1
+      ;;
+    l)
+     LOAD_MODULES=0
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+
+# If this is a mocked job 
+if [ ${IS_MOCK} -gt 0 ]
+then
+  if [ -z "${SLURM_ARRAY_TASK_ID}" ]
+  then
+    SLURM_ARRAY_TASK_ID=1
+    echo "SLURM_ARRAY_TASK_ID not defined, setting to ${SLURM_ARRAY_TASK_ID}"
+  fi
+fi
+
+# Load the necessary modules
+if [ ${LOAD_MODULES} -gt 0 ]
+then
+  module purge
+  module load GCC/12.3.0
+  module load OpenMPI/4.1.5-GCC-12.3.0
+  module load R/4.3.2-gfbf-2023a
+fi
+
+# Spin up python virtual environment
+#source (<REPO_ROOT_DIR>)/.venv/bin/activate
+export PYTHONPATH="(<REPO_ROOT_DIR>)/.venv/lib/python3.11/site-packages:${PYTHONPATH}"
+whereis python3
+python3 --version
+
+
+# Variables, defined by launch script 
+EXP_NAME=(<EXP_NAME>)
+SCRATCH_EXP_DIR=(<SCRATCH_EXP_DIR>)
+SCRATCH_FILE_DIR=(<SCRATCH_FILE_DIR>)
+
+# Use these variables to create a few helper variables
+ZERO_PADDED_TASK_ID=$( ${SCRATCH_FILE_DIR}/zero_pad.sh ${SLURM_ARRAY_TASK_ID} 3 )
+SCRATCH_JOB_DIR=${SCRATCH_EXP_DIR}/reps/${ZERO_PADDED_TASK_ID}
+# Load global helper functions
+. ${SCRATCH_FILE_DIR}/helper_functions.sh
+
+# Calculate the replicate's seed
+SEED_BASE=$( exp_name_to_seed ${EXP_NAME} )
+SEED=$(( ${SEED_BASE} + (${SLURM_ARRAY_TASK_ID} * 1000) ))
+echo "Random seed: ${SEED}: Replicate ID: ${SLURM_ARRAY_TASK_ID}"
+
+# Create replicate-specific directories
+mkdir -p ${SCRATCH_JOB_DIR}
+cd ${SCRATCH_JOB_DIR}
+
+
+######## MAIN ########
+# Do the main experiment for this replicate here
+
+TRIAL_IDX=1
+echo "Starting trial #${TRIAL_IDX}"
+TRIAL_SEED=$(( ${SEED} + ${TRIAL_IDX} ))
+echo "Generating graph config file..."
+sed -E "s/\(<SEED>\)/${TRIAL_SEED}/g" ${SCRATCH_FILE_DIR}/graphs/comet_kite_template.json > graph_config.json
+echo "Graph config file generated, generating actual graph..."
+python3 ${SCRATCH_FILE_DIR}/graphs/gen-graphs.py --config graph_config.json --dump_dir ${SCRATCH_JOB_DIR}
+    echo "Graph generated with seed ${TRIAL_SEED}. Time to run..."
+# Run!
+${SCRATCH_FILE_DIR}/MABE \
+    -f ${SCRATCH_FILE_DIR}/exp_main.mabe \
+    -s random_seed=${TRIAL_SEED} \
+    > trial_output.txt
+
+Rscript ${SCRATCH_FILE_DIR}/find_sweeps.R
+
+# Print slurm info if this is not a mock job
+if [ ${IS_MOCK} -eq 0 ]
+then
+  scontrol show job $SLURM_JOB_ID
+fi
