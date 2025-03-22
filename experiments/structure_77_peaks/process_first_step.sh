@@ -42,15 +42,15 @@ do
         #echo "    $f_graph_reward --- $f_graph_step"
         exp_id_zp=$(printf "%02d" $exp_id)
         exp_id=$(( exp_id + 1 ))
-        exp_name="2024_11_14_${exp_id_zp}__${p_graph_name}__r_${f_graph_reward}__s_${f_graph_step}"
+        exp_name="2024_12_13_${exp_id_zp}__${p_graph_name}__r_${f_graph_reward}__s_${f_graph_step}"
         echo "Processing: ${exp_name}"
         if ! [ -e ${exp_name}/analysis ]
         then
-          cp -r 2024_11_14_00__toroidal_lattice__r_1_1__s_-0_05/analysis ${exp_name}
+          cp -r 2024_12_13_01__toroidal_lattice__r_2_0__s_-0_05/analysis ${exp_name}
         fi
         if ! [ ${replace_scripts} -eq 0 ]
         then
-          cp 2024_11_14_00__toroidal_lattice__r_1_1__s_-0_05/analysis/*.R ${exp_name}/analysis
+          cp 2024_12_13_01__toroidal_lattice__r_2_0__s_-0_05/analysis/*.R ${exp_name}/analysis
         fi
         cd ${exp_name}/analysis
         Rscript 00_analyze_discovery_data.R
