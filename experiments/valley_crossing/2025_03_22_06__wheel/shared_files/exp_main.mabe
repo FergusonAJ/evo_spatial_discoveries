@@ -60,6 +60,7 @@ max_file.ADD_COLUMN( "Genome", "best_org.TRAIT('genotype')" );
 
 @START() {
   PRINT("random_seed = ", random_seed, "\n");  // Print seed at run start.
+  pop_size = adj_placement.NUM_NODES();
   main_pop.INJECT("ints_org", pop_size);       // Inject starting population.
 }
 
@@ -86,7 +87,7 @@ max_file.ADD_COLUMN( "Genome", "best_org.TRAIT('genotype')" );
   max_file.WRITE();
   //main_pop.SAVE_TO_FILE("snapshots/ud_" + ud + ".pop");
 
-  select_r.SELECT(main_pop, next_pop, pop_size);
+  select_r.SELECT_SPATIAL(main_pop, next_pop);
   main_pop.REPLACE_WITH(next_pop);
 }
 

@@ -42,7 +42,7 @@ fi
 num_nodes=5
 
 output_file=../combined_ifg_discovery_data.csv
-echo "rep,node,steps,update_discovered" > ${output_file}
+echo "rep,source_node,dest_node,num_steps,update_discovered" > ${output_file}
 for dir_name in $( ls ${SCRATCH_REP_DIR} | sort)
 do
     full_name=${SCRATCH_REP_DIR}/${dir_name}
@@ -52,8 +52,5 @@ do
     fi
 
     echo "Scraping IFG for rep: ${dir_name}"
-    for node in $(seq 1 ${num_nodes})
-    do
-        grep -P "^0,${node}," ${full_name}/ifg_discoveries.csv | cut --delimiter=, -f 3,4 | sort -n | tail -n 1 | sed -E "s/^/${dir_name},${node},/" >> ${output_file}
-    done
+    tail -n +2 ${full_name}/ifg_discoveries.csv | sed -E "s/^/${dir_name},/" >> ${output_file}
 done

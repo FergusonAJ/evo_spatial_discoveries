@@ -50,6 +50,6 @@ do
     then
         continue
     fi
-    echo ${dir_name}
+    echo "Scraping max org (time series) data for rep ${dir_name}"
     tail -n +2 ${full_name}/max_org.csv | grep -P "." -n | sed -E "s/(.+):(.+),\"\[ ([0-9]+) ([0-9]+) ([0-9]+) \]\"/\1,\2,\3,\4,\5,${dir_name}/g" | grep -P "^\d+000," >> ${output_file}
 done
