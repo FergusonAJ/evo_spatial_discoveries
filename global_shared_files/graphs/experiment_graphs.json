@@ -7,6 +7,42 @@
       "output_mode":"list"
     },
     {
+      "graph": "toroidal-lattice",
+      "params": {"graph_width": 30, "graph_height": 120},
+      "output_id": "toroidal_lattice_3600__30_120",
+      "output_mode":"list"
+    },
+    {
+      "graph": "toroidal-lattice",
+      "params": {"graph_width": 15, "graph_height": 240},
+      "output_id": "toroidal_lattice_3600__15_240",
+      "output_mode":"list"
+    },
+    {
+      "graph": "toroidal-lattice",
+      "params": {"graph_width": 4, "graph_height": 900},
+      "output_id": "toroidal_lattice_3600__4_900",
+      "output_mode":"list"
+    },
+    {
+      "graph": "toroidal-lattice",
+      "params": {"graph_width": 3, "graph_height": 1200},
+      "output_id": "toroidal_lattice_3600__3_1200",
+      "output_mode":"list"
+    },
+    {
+      "graph": "toroidal-lattice",
+      "params": {"graph_width": 2, "graph_height": 1800},
+      "output_id": "toroidal_lattice_3600__2_1800",
+      "output_mode":"list"
+    },
+    {
+      "graph": "toroidal-lattice",
+      "params": {"graph_width": 1, "graph_height": 3600},
+      "output_id": "toroidal_lattice_3600__1_3600",
+      "output_mode":"list"
+    },
+    {
       "graph": "linear-chain",
       "params": {"nodes": 3600},
       "output_id": "linear_chain_3600",
