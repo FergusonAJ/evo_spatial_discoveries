@@ -12,5 +12,6 @@ do
     ./scrape_phylogenetic_data.sh  
     ./scrape_ifg_discoveries.sh    
     ./scrape_sweep_data.sh
+    ./scrape_max_org_data.sh
     cd $this_dir
 done
