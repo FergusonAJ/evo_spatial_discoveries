@@ -25,14 +25,14 @@ ggplot(df_final, aes(x = gradient_id)) +
   xlab('Gradient steepness') + 
   ylab('Density') +
   facet_grid(row = vars(as.factor(structure)))
-ggsave(paste0(plot_dir, 'gradient_density.pdf'), units = 'in', width = 6, height = 12)
+ggsave(paste0(plot_dir, '/gradient_density.pdf'), units = 'in', width = 6, height = 12)
 
 ggplot(df_final, aes(x = gradient_id)) + 
   geom_density(fill='#0055aa', alpha = 0.2) + 
   xlab('Gradient steepness') + 
   ylab('Density (scale varies per plot)') +
   facet_grid(row = vars(as.factor(structure)), scales = 'free_y') 
-ggsave(paste0(plot_dir, 'gradient_density__free_y.pdf'), units = 'in', width = 6, height = 12)
+ggsave(paste0(plot_dir, '/gradient_density__free_y.pdf'), units = 'in', width = 6, height = 12)
 
 
 ggplot(df_final, aes(x = gradient_id)) + 
@@ -47,4 +47,4 @@ ggplot(df_final, aes(x = as.factor(structure), y = gradient_id)) +
   scale_y_continuous(limits = c(0,101)) + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   geom_jitter(alpha = 0.5)
-ggsave(paste0(plot_dir, 'gradient_boxplots.pdf'), units = 'in', width = 8, height = 6)
+ggsave(paste0(plot_dir, '/gradient_boxplots.pdf'), units = 'in', width = 8, height = 6)
