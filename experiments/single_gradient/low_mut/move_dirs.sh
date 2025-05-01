@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mv 2025_03_16_01__well_mixed 2025_04_30_01__well_mixed
+mv 2025_03_16_02__linear_chain 2025_04_30_02__linear_chain
+mv 2025_03_16_03__lattice 2025_04_30_03__lattice
+mv 2025_03_16_04__star 2025_04_30_04__star
+mv 2025_03_16_05__cycle 2025_04_30_05__cycle
+mv 2025_03_16_06__wheel 2025_04_30_06__wheel
+mv 2025_03_16_07__windmill 2025_04_30_07__windmill
+mv 2025_03_16_08__comet_kite 2025_04_30_08__comet_kite
+mv 2025_03_16_09__clique_ring 2025_04_30_09__clique_ring
+mv 2025_03_16_10__random_waxman 2025_04_30_10__random_waxman
+mv 2025_03_16_x1__combined_analysis 2025_04_30_x1__combined_analysis
