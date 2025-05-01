@@ -28,3 +28,4 @@ ggplot(df_ifg[df_ifg$node == 1,], aes(x = as.factor(structure_str), y = update_d
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
   scale_y_continuous(limits = c(0, 100000))
 ggsave(paste0(plot_dir, '/ifg_discovery_time.pdf'), units = 'in', width = 6, height = 4)
+
