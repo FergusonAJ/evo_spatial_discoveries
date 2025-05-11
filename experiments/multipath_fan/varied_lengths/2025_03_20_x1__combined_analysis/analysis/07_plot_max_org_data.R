@@ -20,6 +20,12 @@ ggplot(df_max_org, aes(x = generation, y = fitness, group = rep)) +
   facet_wrap(vars(as.factor(structure)))
 ggsave(paste0(plot_dir, '/max_fitness_over_time.pdf'), units = 'in', width = 10, height = 8)
 
+ggplot(df_max_org[df_max_org$generation <= 5000,], aes(x = generation, y = fitness, group = rep)) + 
+  geom_line(alpha = 0.2) + 
+  xlab('Generation') + 
+  ylab('Fitness') + 
+  facet_wrap(vars(as.factor(structure)))
+
 ggplot(df_final, aes(x = gradient_id)) + 
   geom_density(fill='#0055aa', alpha = 0.2) + 
   xlab('Gradient steepness') + 

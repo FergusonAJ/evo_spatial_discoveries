@@ -11,7 +11,7 @@ if(!dir.exists(plot_dir)){
 df_sweeps = read.csv('../data/combined_sweep_data.csv')
 
 df_grouped = dplyr::group_by(df_sweeps, rep, structure, gradient)
-df_summary = dplyr::summarise(df_grouped, count = dplyr::n())
+df_summary = dplyr::summarise(df_grouped, count = dplyr::n(), first_sweep_gen = min(Generation))
 
 df_sweeps$structure_str = gsub('_', ' ', df_sweeps$structure)
 df_summary$structure_str = gsub('_', ' ', df_summary$structure)
@@ -25,11 +25,33 @@ ggplot(df_summary, aes(x = as.factor(structure_str), y = count)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ggsave(paste0(plot_dir, '/total_sweeps.pdf'), units = 'in', width = 8, height = 6)
 
+ggplot(df_summary[df_summary$structure != 'star' & df_summary$structure != 'wheel',], aes(x = as.factor(structure_str), y = count)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter() +
+  xlab('Spatial structure') + 
+  ylab('Number of sweeps') + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggsave(paste0(plot_dir, '/total_sweeps__no_star_or_wheel.pdf'), units = 'in', width = 8, height = 6)
+
+ggplot(df_summary, aes(x = as.factor(structure_str), y = first_sweep_gen)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter() +
+  xlab('Spatial structure') + 
+  ylab('Generation of first sweep') + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+few_sweep_structures = c('linear_chain', 'cycle', 'clique_ring')
+ggplot(df_summary[!df_summary$structure %in% few_sweep_structures,], aes(x = as.factor(structure_str), y = first_sweep_gen)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter() +
+  xlab('Spatial structure') + 
+  ylab('Generation of first sweep') + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 
 #ggplot(df_sweeps, aes(x = as.factor(structure), y = Generation)) + 
 #  geom_boxplot(outlier.shape = NA) + 
 #  geom_jitter(alpha = 0.1)
-
 
 ggplot(df_sweeps, aes(x=sweep_num, y = Generation, group=rep)) + 
   geom_point(alpha = 0.1) + 
@@ -45,3 +67,7 @@ ggplot(df_sweeps, aes(x = Generation)) +
   ylab('Count') + 
   facet_wrap(vars(as.factor(structure_str)))
 ggsave(paste0(plot_dir, '/sweep_generation_histograms.pdf'), units = 'in', width = 10, height = 8)
+
+
+
+

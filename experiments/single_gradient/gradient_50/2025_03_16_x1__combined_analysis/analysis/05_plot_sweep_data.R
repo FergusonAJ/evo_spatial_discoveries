@@ -25,6 +25,14 @@ ggplot(df_summary, aes(x = as.factor(structure_str), y = count)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ggsave(paste0(plot_dir, '/total_sweeps.pdf'), units = 'in', width = 8, height = 6)
 
+ggplot(df_summary[df_summary$structure != 'star' & df_summary$structure != 'wheel',], aes(x = as.factor(structure_str), y = count)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter() +
+  xlab('Spatial structure') + 
+  ylab('Number of sweeps') + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggsave(paste0(plot_dir, '/total_sweeps__no_star_or_wheel.pdf'), units = 'in', width = 8, height = 6)
+
 
 #ggplot(df_sweeps, aes(x = as.factor(structure), y = Generation)) + 
 #  geom_boxplot(outlier.shape = NA) + 
